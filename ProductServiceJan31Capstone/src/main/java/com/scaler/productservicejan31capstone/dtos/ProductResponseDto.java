@@ -1,5 +1,7 @@
 package com.scaler.productservicejan31capstone.dtos;
 
+import com.scaler.productservicejan31capstone.models.Product;
+
 public class ProductResponseDto {
     private long id;
     private String name;
@@ -54,5 +56,16 @@ public class ProductResponseDto {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public static ProductResponseDto from(Product product){
+        ProductResponseDto productResponseDto = new ProductResponseDto();
+        productResponseDto.setId(product.getId());
+        productResponseDto.setName(product.getName());
+        productResponseDto.setDescription(product.getDescription());
+        productResponseDto.setImageUrl(product.getImageUrl());
+        productResponseDto.setPrice(product.getPrice());
+        productResponseDto.setCategory(product.getCategory().getName());
+        return productResponseDto;
     }
 }
