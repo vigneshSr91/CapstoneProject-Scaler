@@ -2,6 +2,7 @@ package com.scaler.productservicejan31capstone.controllers;
 
 import com.scaler.productservicejan31capstone.dtos.CreateFakestoreProductDto;
 import com.scaler.productservicejan31capstone.dtos.ProductResponseDto;
+import com.scaler.productservicejan31capstone.exceptions.ProductNotFoundException;
 import com.scaler.productservicejan31capstone.models.Product;
 import com.scaler.productservicejan31capstone.services.ProductService;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class ProductController {
     }
 
     @GetMapping(value="/product/{id}")
-    public ResponseEntity<ProductResponseDto> getProductById(@PathVariable long id){
+    public ResponseEntity<ProductResponseDto> getProductById(@PathVariable long id) throws ProductNotFoundException {
         Product product = productService.getProductById(id);
         ProductResponseDto productResponseDto = ProductResponseDto.from(product);
 
