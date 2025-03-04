@@ -1,20 +1,15 @@
 package com.scaler.productservicejan31capstone.models;
 
-public class Product {
-    private long id;
-    private String name;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Product extends BaseModel{
     private String description;
     private String imageUrl;
     private double price;
+    @ManyToOne
     private Category category;
-
-    public long getId() {
-        return this.id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
 
     public String getDescription() {
         return this.description;
@@ -30,14 +25,6 @@ public class Product {
 
     public Category getCategory() {
         return this.category;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setDescription(String description) {
