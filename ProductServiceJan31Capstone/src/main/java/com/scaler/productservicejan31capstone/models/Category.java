@@ -9,6 +9,10 @@ import java.util.List;
 public class Category extends BaseModel {
     private String description;
     @OneToMany(mappedBy = "category")
+    //@OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    //@Fetch(FetchMode.JOIN)
+    //@Fetch(FetchMode.SUBSELECT)
+    //@Fetch(FetchMode.SELECT)
     private List<Product> products;
 
     public String getDescription() {

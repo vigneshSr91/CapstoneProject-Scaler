@@ -21,12 +21,19 @@ public class ProductDBService implements ProductService{
     }
     @Override
     public Product getProductById(long id) throws ProductNotFoundException {
-        return null;
+        Optional<Product> optionalProduct = productRepository.findById(id);
+
+        if (optionalProduct.isEmpty()){
+            throw new ProductNotFoundException("Product with Id " + id + " not found");
+        } else {
+            return optionalProduct.get();
+        }
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return null;
+
+        return productRepository.findAll();
     }
 
     @Override
